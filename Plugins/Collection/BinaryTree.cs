@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CsLibs.Collection
@@ -7,7 +9,7 @@ namespace CsLibs.Collection
     /// 二叉树
     /// </summary>
     /// <typeparam name="T">实现了IComparable的任意类型</typeparam>
-    public class BinaryTree<T> where T : IComparable
+    public class BinaryTree<T>: IEnumerable<T> where T : IComparable
     {
         public class TreeNode
         {
@@ -32,17 +34,35 @@ namespace CsLibs.Collection
         {
             InsertNode(items);
         }
+
+        // 升序迭代器
+        public IEnumerator<T> GetEnumerator()
+        {
+            //return new BinaryTreeEnum(this);
+            return ToList().GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         ~BinaryTree()
         {
             DestroySubTree(root);
         }
-        
+
+
+
+
+        public void InsertNode(T item)
+        {
+            var newNode = new TreeNode {value = item};
+            Insert(ref root, ref newNode);
+        }
         public void InsertNode(params T[] items)
         {
             for (var i = 0; i < items.Length; i++)
             {
-                var newNode = new TreeNode {value = items[i]};
-                Insert(ref root, ref newNode);
+                InsertNode(items[i]);
             }
         }
         
@@ -64,6 +84,42 @@ namespace CsLibs.Collection
         
         public void Remove(T item) => DeleteNode(item, ref root);
         
+        public T[] ToArray()
+        {
+            return ToList().ToArray();
+        }
+        public List<T> ToList()
+        {
+            var list = new List<T>();
+            InOrder(root);
+            void InOrder(TreeNode nodePtr)
+            {
+                if (nodePtr)
+                {
+                    InOrder(nodePtr.left);
+                    list.Add(nodePtr.value);
+                    InOrder(nodePtr.right);
+                }
+            }
+
+            return list;
+        }
+        public Stack<T> ToStack()
+        {
+            var stack = new Stack<T>();
+            InOrder(root);
+            void InOrder(TreeNode nodePtr)
+            {
+                if (nodePtr)
+                {
+                    InOrder(nodePtr.left);
+                    stack.Push(nodePtr.value);
+                    InOrder(nodePtr.right);
+                }
+            }
+
+            return stack;
+        }
         /// <summary>
         /// 升序输出二叉树
         /// </summary>
@@ -169,5 +225,53 @@ namespace CsLibs.Collection
         {
             Debug.Log($"{nodePtr.value.ToString()}");
         }
+        
+        // 迭代器
+        /*public class BinaryTreeEnum : IEnumerator<T>
+        {
+            private T[] items;
+            private int index = -1;
+            
+            public BinaryTreeEnum(BinaryTree<T> tree)
+            {
+                items = tree.ToArray();
+            }
+            
+            
+            public bool MoveNext()
+            {
+                index++;
+                return (index < items.Length);
+            }
+
+            public void Reset()
+            {
+                index = -1;
+            }
+
+            public T Current
+            {
+                get
+                {
+                    try
+                    {
+                        return items[index];
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+            }
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose()
+            {
+                items = null;
+            }
+        } */
     }
+
+    
 }
