@@ -2,7 +2,7 @@
   "name": "com.fengyan.cslibs",
   "version": "1.0.0",
   "displayName": "Unity C# Library",
-  "description": "本人实现的适用于Unity C#的一些库（非Unity项目也可以）",
+  "description": "\u672c\u4eba\u5b9e\u73b0\u7684\u9002\u7528\u4e8eUnity C#\u7684\u4e00\u4e9b\u5e93",
   "documentationUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/tree/main",
   "changelogUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/releases",
   "licensesUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/blob/main/LICENSE",
@@ -12,8 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/Aaron8052/Unity-CSharp-Libs.git"
   },
-  "dependencies": {
-  },
   "keywords": [
     "CS",
     "lib",
@@ -21,7 +19,7 @@
     "CSharp"
   ],
   "author": {
-    "name": "FengYan 枫炎",
+    "name": "FengYan \u67ab\u708e",
     "url": "https://github.com/Aaron8052"
   }
 }
