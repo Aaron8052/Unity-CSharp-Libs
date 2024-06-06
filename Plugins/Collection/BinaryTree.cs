@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace CsLibs.Collection
 {
@@ -27,10 +28,22 @@ namespace CsLibs.Collection
         
         private TreeNode root;
 
-        public void InsertNode(T item)
+        public BinaryTree(params T[] items)
         {
-            var newNode = new TreeNode {value = item};
-            Insert(ref root, ref newNode);
+            InsertNode(items);
+        }
+        ~BinaryTree()
+        {
+            DestroySubTree(root);
+        }
+        
+        public void InsertNode(params T[] items)
+        {
+            for (var i = 0; i < items.Length; i++)
+            {
+                var newNode = new TreeNode {value = items[i]};
+                Insert(ref root, ref newNode);
+            }
         }
         
         public bool SearchNode(T item)
@@ -94,7 +107,7 @@ namespace CsLibs.Collection
         {
 
             if (nodePtr == null)
-                Console.Write("Cannot delete empty node.\n");
+                Debug.Log("Cannot delete empty node.");
             else if (!nodePtr.right)
             {
                 // 如果右边是空的，直接将nodePtr替换为左边的节点
@@ -125,7 +138,7 @@ namespace CsLibs.Collection
             if (nodePtr)
             {
                 DisplayInOrder(nodePtr.left);
-                Console.Write($"{nodePtr.value}\n");
+                OutputNode(nodePtr);
                 DisplayInOrder(nodePtr.right);
             }
         }
@@ -135,7 +148,7 @@ namespace CsLibs.Collection
         {
             if (nodePtr)
             {
-                Console.Write($"{nodePtr.value}\n");
+                OutputNode(nodePtr);
                 DisplayPreOrder(nodePtr.left);
                 DisplayPreOrder(nodePtr.right);
             }
@@ -148,8 +161,13 @@ namespace CsLibs.Collection
             {
                 DisplayPostOrder(nodePtr.left);
                 DisplayPostOrder(nodePtr.right);
-                Console.Write($"{nodePtr.value}\n");
+                OutputNode(nodePtr);
             }
+        }
+        
+        private void OutputNode(TreeNode nodePtr)
+        {
+            Debug.Log($"{nodePtr.value.ToString()}");
         }
     }
 }
