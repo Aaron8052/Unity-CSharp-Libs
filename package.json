@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "displayName": "Unity C# Library",
   "description": "本人实现的适用于Unity C#的一些库（非Unity项目也可以）",
-  "documentationUrl": "",
-  "changelogUrl": "",
-  "licensesUrl": "",
+  "documentationUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/tree/main",
+  "changelogUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/releases",
+  "licensesUrl": "https://github.com/Aaron8052/Unity-CSharp-Libs/blob/main/LICENSE",
   "unity": "2021.3",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aaron8052/Unity-iOSNative-Plugin.git"
+    "url": "git+https://github.com/Aaron8052/Unity-CSharp-Libs.git"
   },
   "dependencies": {
   },
