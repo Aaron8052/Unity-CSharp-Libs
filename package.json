@@ -1,0 +1,27 @@
+{
+  "name": "com.fengyan.cslibs",
+  "version": "1.0.0",
+  "displayName": "Unity C# Library",
+  "description": "本人实现的适用于Unity C#的一些库（非Unity项目也可以）",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "unity": "2021.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aaron8052/Unity-iOSNative-Plugin.git"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+    "CS",
+    "lib",
+    "C#",
+    "CSharp"
+  ],
+  "author": {
+    "name": "FengYan 枫炎",
+    "url": "https://github.com/Aaron8052"
+  }
+}
