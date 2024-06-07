@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CsLibs.Collection
+namespace CsLibs.Collections
 {
     /// <summary>
     /// 二叉树

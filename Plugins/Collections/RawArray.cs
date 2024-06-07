@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace CsLibs.Collection
+namespace CsLibs.Collections
 {
     /// <summary>
     /// 无类型安全、边界检查的数组，只能用于非托管对象

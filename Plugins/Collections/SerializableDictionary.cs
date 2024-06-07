@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CsLibs.Collection
+namespace CsLibs.Collections
 {
     /// <summary>
     /// 可以配合Unity Inspector使用的可序列化字典
