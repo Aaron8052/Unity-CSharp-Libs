@@ -36,7 +36,12 @@ namespace CsLibs.Collections
         {
             InsertNode(items);
         }
-
+        ~BinaryTree()
+        {
+            DestroySubTree(root);
+        }
+        
+#region Enumerator
         // 升序迭代器
         public IEnumerator<T> GetEnumerator()
         {
@@ -47,14 +52,10 @@ namespace CsLibs.Collections
         {
             return GetEnumerator();
         }
-        ~BinaryTree()
-        {
-            DestroySubTree(root);
-        }
 
+#endregion
 
-
-
+#region Public Functions
         public void InsertNode(T item)
         {
             var newNode = new TreeNode {value = item};
@@ -128,7 +129,9 @@ namespace CsLibs.Collections
         public void DisplayInOrder() => DisplayInOrder(root);
         public void DisplayPreOrder() => DisplayPreOrder(root);
         public void DisplayPostOrder() => DisplayPostOrder(root);
-        
+#endregion
+
+#region Private Functions
         private void Insert(ref TreeNode nodePtr, ref TreeNode newNode)
         {
             if (nodePtr == null)
@@ -227,6 +230,10 @@ namespace CsLibs.Collections
         {
             Debug.Log($"{nodePtr.value.ToString()}");
         }
+
+
+#endregion
+        
         
         // 迭代器
         /*public class BinaryTreeEnum : IEnumerator<T>
