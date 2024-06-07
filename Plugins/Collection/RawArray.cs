@@ -5,7 +5,10 @@ using System.Runtime.InteropServices;
 
 namespace CsLibs.Collection
 {
-    // this array doesn't have bounds checking, use it with your own risk
+    /// <summary>
+    /// 无类型安全、边界检查的数组，只能用于非托管对象
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public unsafe class RawArray<T> where T : unmanaged
     {
         public RawArray(int size)

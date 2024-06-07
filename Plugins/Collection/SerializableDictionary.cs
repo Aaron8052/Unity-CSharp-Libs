@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace CsLibs.Collection
 {
+    /// <summary>
+    /// 可以配合Unity Inspector使用的可序列化字典
+    /// </summary>
+    /// <typeparam name="TKey">键</typeparam>
+    /// <typeparam name="TValue">值</typeparam>
     [Serializable]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
