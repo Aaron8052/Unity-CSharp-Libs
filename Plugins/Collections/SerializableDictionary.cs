@@ -12,7 +12,8 @@ namespace CsLibs.Collections
     /// <typeparam name="TKey">键</typeparam>
     /// <typeparam name="TValue">值</typeparam>
     [Serializable]
-    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, 
+        ISerializationCallbackReceiver
     {
         [Serializable]
         public struct KeyValue

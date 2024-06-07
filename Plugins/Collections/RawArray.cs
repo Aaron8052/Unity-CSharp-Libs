@@ -8,7 +8,7 @@ namespace CsLibs.Collections
     /// <summary>
     /// 无类型安全、边界检查的数组，只能用于非托管对象
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">指针类型</typeparam>
     public unsafe class RawArray<T> where T : unmanaged
     {
         public RawArray(int size)
