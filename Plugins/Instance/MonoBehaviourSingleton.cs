@@ -13,6 +13,17 @@ namespace CsLibs.Singleton
 		protected static T instance;
 		public static T Instance => instance ??= FindObjectOfType<T>();
 		public static T INSTANCE => Instance;
+		public static T TempInstance
+		{
+			get
+			{
+				if (!instance)
+				{
+					instance = FindObjectOfType<T>() ?? NewInstance();
+				}
+				return instance;
+			}
+		}
 		void Awake()
 		{
 			if (instance && instance != this)
@@ -20,10 +31,38 @@ namespace CsLibs.Singleton
 				Destroy(this);
 				return;
 			}
-			instance = GetComponent<T>() ?? FindObjectOfType<T>();
+			instance ??= GetComponent<T>() ?? FindObjectOfType<T>();
 			OnAwake();
 		}
 
 		protected virtual void OnAwake(){}
+		
+		static bool isInited;
+		static void InitTempSingleton()
+		{
+			if (isInited)
+				return;
+			
+			Application.quitting += OnAppQuit;
+			isInited = true;
+		}
+
+		static bool appQuit;
+		static void OnAppQuit()
+		{
+			appQuit = true;
+		}
+		static T NewInstance()
+		{
+			InitTempSingleton();
+			
+			if (appQuit)
+				return null;
+			
+			var typeName = typeof(T).Name;
+			var instance = new GameObject($"[Instance] {typeName}").AddComponent<T>();
+			DontDestroyOnLoad(instance);
+			return instance;
+		}
 	}
 }
